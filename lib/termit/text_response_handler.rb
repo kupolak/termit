@@ -19,11 +19,11 @@ module Termit
     private
 
     def extract_translation
-      @text.split("[[")[1].split("\"")[1]
+      @text.split("[[")[1].to_s.split("\"")[1]
     end
 
     def extract_synonyms
-      synonyms_data = @text.split("[[")[2].split("[")[1]
+      synonyms_data = @text.to_s.split("[[")[2].to_s.split("[")[1]
       length = synonyms_data && synonyms_data.length
       if length && synonyms_available(synonyms_data)
         synonyms_data[0..(length-3)].delete("\"").gsub(/(,)/, ", ")
